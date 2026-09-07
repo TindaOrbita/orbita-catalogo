@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Órbita — Catálogo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --linen:#EAE6DC;
+    --linen-light:#F3F1EA;
+    --card-line:#DCD6C6;
+    --ink:#1B1D19;
+    --ink-soft:#5B5C55;
+    --moss:#3F4A3A;
+    --moss-dark:#2E3729;
+    --gold:#C9A66B;
+    --gold-dark:#4A3A1F;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--linen);
+    color:var(--ink);
+    line-height:1.5;
+  }
+
+  .serif{font-family:'Fraunces',serif;font-style:italic;}
+  .mono{font-family:'IBM Plex Mono',monospace;letter-spacing:0.08em;}
+
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 6vw;
+    border-bottom:0.5px solid rgba(27,29,25,0.15);
+    position:sticky;
+    top:0;
+    background:var(--linen);
+    z-index:10;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  header .brand{font-size:24px;font-weight:600;}
+  nav{display:flex;gap:22px;flex-wrap:wrap;}
+  nav a{
+    color:var(--ink);
+    text-decoration:none;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+  }
+  nav a:hover{border-bottom:1px solid var(--gold);}
+
+  .hero{
+    position:relative;
+    background:var(--moss);
+    color:var(--linen);
+    padding:70px 6vw 50px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;inset:0;
+    background:repeating-linear-gradient(115deg,rgba(234,230,220,0.05) 0px,rgba(234,230,220,0.05) 1px,transparent 1px,transparent 60px);
+  }
+  .hero-content{position:relative;max-width:520px;}
+  .hero h1{font-size:44px;line-height:1.05;margin-bottom:14px;}
+  .hero p{color:var(--gold);font-size:14px;max-width:400px;}
+
+  .marquee{
+    background:var(--gold);
+    color:var(--gold-dark);
+    padding:9px 0;
+    overflow:hidden;
+    white-space:nowrap;
+  }
+  .marquee span{
+    display:inline-block;
+    font-size:12px;
+    padding-left:100%;
+    animation:scroll 18s linear infinite;
+  }
+  @keyframes scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-100%);}
+  }
+
+  .contact-bar{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+    padding:20px 6vw;
+    background:var(--linen-light);
+    border-bottom:0.5px solid rgba(27,29,25,0.15);
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 18px;
+    border-radius:2px;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:500;
+    transition:opacity 0.15s;
+  }
+  .btn:hover{opacity:0.85;}
+  .btn-whatsapp{background:var(--moss);color:var(--linen);}
+  .btn-phone{background:transparent;color:var(--ink);border:1px solid var(--ink);}
+
+  section.category{padding:50px 6vw;}
+  .cat-title{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+  }
+  .cat-heading{
+    font-size:30px;
+    margin-bottom:28px;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(230px, 1fr));
+    gap:20px;
+  }
+
+  .product-card{
+    background:var(--linen-light);
+    border:0.5px solid var(--card-line);
+    border-radius:2px;
+    padding:16px;
+    display:flex;
+    flex-direction:column;
+  }
+  .product-img{
+    height:220px;
+    border-radius:2px;
+    background:var(--card-line);
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+  .product-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .product-name{font-size:18px;margin-bottom:4px;}
+  .product-desc{font-size:12.5px;color:var(--ink-soft);margin-bottom:10px;flex-grow:1;}
+  .product-price{font-size:16px;font-weight:600;margin-bottom:12px;}
+  .product-price span{font-size:11px;color:var(--ink-soft);font-weight:400;display:block;}
+
+  .btn-consultar{
+    background:var(--moss);
+    color:var(--linen);
+    text-align:center;
+    padding:10px;
+    border-radius:2px;
+    text-decoration:none;
+    font-size:12.5px;
+    font-weight:500;
+  }
+  .btn-consultar:hover{background:var(--moss-dark);}
+
+  footer{
+    background:var(--moss);
+    color:var(--linen);
+    padding:40px 6vw;
+    text-align:center;
+  }
+  footer .serif{font-size:20px;display:block;margin-bottom:10px;}
+  footer p{font-size:12.5px;color:#C7CFC3;margin-bottom:16px;}
+  footer .btn-whatsapp{margin-bottom:8px;}
+
+  @media (max-width:600px){
+    .hero h1{font-size:32px;}
+    header{padding:14px 5vw;}
+    nav{gap:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="brand serif">Órbita</span>
+  <nav>
+    <a href="#remeras">Remeras</a>
+    <a href="#calzas">Calzas</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="serif">Movimiento<br>con carácter.</h1>
+    <p>Catálogo 2026 — consultas y pedidos por WhatsApp o teléfono.</p>
+  </div>
+</section>
+
+<div class="marquee"><span class="mono">ÓRBITA — HECHO PARA MOVERSE — CONSULTÁ POR WHATSAPP — ENVÍOS A TODO EL PAÍS — ÓRBITA — HECHO PARA MOVERSE — CONSULTÁ POR WHATSAPP — ENVÍOS A TODO EL PAÍS —</span></div>
+
+<div class="contact-bar">
+  <a class="btn btn-whatsapp" href="https://wa.me/5492610000000?text=Hola!%20Quiero%20consultar%20por%20el%20cat%C3%A1logo%20de%20%C3%93rbita" target="_blank" rel="noopener">
+    WhatsApp: +54 9 261 000-0000
+  </a>
+  <a class="btn btn-phone" href="tel:+5492610000000">
+    Llamar
+  </a>
+</div>
+
+<!-- ================= REMERAS ================= -->
+<section class="category" id="remeras">
+  <p class="cat-title mono">01 — LISA, TRANSPIRABLE, CORTE OVERSIZE</p>
+  <h2 class="cat-heading serif">Remeras</h2>
+  <div class="grid">
+
+    <div class="product-card">
+      <div class="product-img"><img src="imagenes/remera-marron.png" alt="Remera lisa color marrón"></div>
+      <div class="product-name">Remera Lisa — Marrón</div>
+      <div class="product-desc">Corte oversize, algodón suave, ideal para uso diario o entrenar. Talles S–XL.</div>
+      <div class="product-price">$23.000<span>Talles S – XL</span></div>
+      <a class="btn-consultar" href="https://wa.me/5492610000000?text=Hola!%20Me%20interesa%20la%20Remera%20Lisa%20Marr%C3%B3n%20de%20%C3%93rbita" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img"><img src="imagenes/remera-beige.png" alt="Remera lisa color beige"></div>
+      <div class="product-name">Remera Lisa — Beige</div>
+      <div class="product-desc">Corte oversize, algodón suave, ideal para uso diario o entrenar. Talles S–XL.</div>
+      <div class="product-price">$23.000<span>Talles S – XL</span></div>
+      <a class="btn-consultar" href="https://wa.me/5492610000000?text=Hola!%20Me%20interesa%20la%20Remera%20Lisa%20Beige%20de%20%C3%93rbita" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= CALZAS ================= -->
+<section class="category" id="calzas">
+  <p class="cat-title mono">02 — COMPRESIÓN Y CALCE TÉCNICO</p>
+  <h2 class="cat-heading serif">Calzas</h2>
+  <div class="grid">
+
+    <div class="product-card">
+      <div class="product-img"><img src="imagenes/calza-corta-floral.png" alt="Calza corta estampado floral"></div>
+      <div class="product-name">Calza Corta Floral</div>
+      <div class="product-desc">Tiro alto, estampado floral exclusivo, tela técnica. Talles S y M.</div>
+      <div class="product-price">$18.000<span>Talles S – M</span></div>
+      <a class="btn-consultar" href="https://wa.me/5492610000000?text=Hola!%20Me%20interesa%20la%20Calza%20Corta%20Floral%20de%20%C3%93rbita" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <span class="serif">Órbita</span>
+  <p>Hecho para moverse. Consultas, talles y pedidos por WhatsApp o teléfono.<br>Envíos a todo el país por Correo Argentino / Andreani.</p>
+  <a class="btn btn-whatsapp" href="https://wa.me/5492610000000?text=Hola!%20Quiero%20consultar%20por%20el%20cat%C3%A1logo%20de%20%C3%93rbita" target="_blank" rel="noopener">
+    Escribir por WhatsApp
+  </a>
+</footer>
+
+</body>
+</html>
